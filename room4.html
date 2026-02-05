@@ -1,0 +1,18 @@
+<p>Which song reminds me of you?</p>
+
+<button onclick="wrong()">Song A</button>
+<button onclick="correct()">Song B</button>
+<button onclick="wrong()">Song C</button>
+
+<p id="message"></p>
+
+<script>
+  function correct() {
+    window.location.href = "room5.html";
+  }
+
+  function wrong() {
+    document.getElementById("message").textContent =
+      "💭 Nope… but that’s still a good one.";
+  }
+</script>
