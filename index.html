@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Escape Room</title>
+  <title>Elizabeth's Rogue Plane Ride</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="airborne">
 
-  <h1>🔐 Elizabeth's Rogue Plane Ride</h1>
-  <p>Solve the puzzle to unlock the next door.</p>
+  <div class="card">
+    <h1>✈️ Elizabeth’s Rogue Plane Ride</h1>
+    <p class="subtitle">Departure: East Coast · Destination: San Francisco</p>
 
-  <div class="lock">
-    <p>What is the nickname I call you?</p>
-    <input type="text" id="answer">
+    <p class="riddle">
+      What is the nickname I call you?
+    </p>
+
+    <input
+      type="text"
+      id="answer"
+      placeholder="Enter answer"
+      autocomplete="off"
+    >
+
     <button onclick="checkAnswer()">Unlock</button>
-    <p id="message"></p>
+
+    <p id="message" class="message"></p>
   </div>
 
   <script src="script.js"></script>
