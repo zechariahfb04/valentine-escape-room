@@ -1,0 +1,18 @@
+<p>Click the object that hides the key:</p>
+
+<button onclick="wrong()">🕯️ Candle</button>
+<button onclick="wrong()">📘 Book</button>
+<button onclick="correct()">🗝️ Frame</button>
+
+<p id="message"></p>
+
+<script>
+  function correct() {
+    window.location.href = "final.html";
+  }
+
+  function wrong() {
+    document.getElementById("message").textContent =
+      "Nothing here… keep searching.";
+  }
+</script>
