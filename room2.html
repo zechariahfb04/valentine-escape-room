@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🔐 Room 2</h1>
+  <p>A stomp to the beat and the month that we'll meet.</p>
+
+  <input type="text" id="answer">
+  <button onclick="checkAnswer()">Unlock</button>
+  <p id="message"></p>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer").value.toLowerCase().trim();
+      const message = document.getElementById("message");
+
+      if (input === "march") {
+        window.location.href = "room3.html";
+      } else {
+        message.textContent = "❌ Not quite. Try again.";
+      }
+    }
+  </script>
+
+</body>
+</html>
