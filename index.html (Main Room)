@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Escape Room</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🔐 Valentine Escape Room</h1>
+  <p>Solve the puzzle to unlock the next door.</p>
+
+  <div class="lock">
+    <p>What is the nickname I call you?</p>
+    <input type="text" id="answer">
+    <button onclick="checkAnswer()">Unlock</button>
+    <p id="message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
