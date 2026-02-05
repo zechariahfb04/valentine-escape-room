@@ -1,18 +1,53 @@
-<p>Elizabeth was filled with the Holy Spirit. (Chapter + Verse)</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room 4 – Descent to San Francisco</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="airborne">
 
-<input type="number" id="code">
-<button onclick="unlock()">Unlock</button>
-<p id="message"></p>
+  <div class="card">
+    <h1>🛬 Descent to San Francisco</h1>
+    <p class="subtitle">Final leg of our flight — almost there!</p>
 
-<script>
-  function unlock() {
-    const code = document.getElementById("code").value;
-    const message = document.getElementById("message");
+    <p class="riddle">
+      Elizabeth was filled with the Holy Spirit. (Chapter + Verse)
+    </p>
 
-    if (code === "0141") {
-      window.location.href = "room4.html";
-    } else {
-      message.textContent = "🚫 THint: You are my 01!💕";
+    <input
+      type="number"
+      id="code"
+      placeholder="Enter 3 or 4-digit code"
+      autocomplete="off"
+    >
+
+    <button onclick="unlock()">Unlock</button>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    function unlock() {
+      const code = document.getElementById("code").value.trim();
+      const message = document.getElementById("message");
+
+      if (!code) {
+        message.textContent = "💭 Enter the code before landing!";
+        return;
+      }
+
+      // Ensure 4 digits (leading zero preserved)
+      const codeStr = code.padStart(4, "0");
+
+      if (codeStr === "0141") {
+        message.textContent = "";
+        window.location.href = "final.html"; // final reveal page
+      } else {
+        message.textContent = "🚫 Hint: You are my 01! 💕";
+      }
     }
-  }
-</script>
+  </script>
+
+</body>
+</html>
