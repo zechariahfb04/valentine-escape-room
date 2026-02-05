@@ -30,29 +30,10 @@
         required
       >
 
-      <!-- metadata for you -->
+      <!-- metadata you receive -->
       <input type="hidden" name="room" value="Room 2 – In the Air">
       <input type="hidden" name="result" id="result">
       <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
 
       <button type="button" onclick="checkAnswer()">Unlock</button>
     </form>
-
-    <p id="message" class="message"></p>
-  </div>
-
-  <script>
-    function checkAnswer() {
-      const inputField = document.getElementById("answer");
-      const input = inputField.value.toLowerCase().trim();
-      const message = document.getElementById("message");
-      const form = document.getElementById("room2Form");
-      const resultField = document.getElementById("result");
-
-      if (!input) {
-        message.textContent = "🛫 Enter a response before takeoff.";
-        return;
-      }
-
-      if (input === "march") {
-        message.textContent = "✅ Smooth skies ah
