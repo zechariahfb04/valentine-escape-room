@@ -13,21 +13,27 @@
 
     <p class="riddle">What is your name in my phone?</p>
 
-    <form
-      id="valentineForm"
-      action="https://formspree.io/f/xreazkva"
-      method="POST"
-    >
-      <input
-        type="text"
-        name="answer"
-        id="answer"
-        placeholder="Enter answer"
-        autocomplete="off"
-        required
-      >
+   <form
+  id="valentineForm"
+  action="https://formspree.io/f/xreazkva"
+  method="POST"
+>
+  <!-- redirect controller -->
+  <input type="hidden" name="_redirect" id="redirect">
 
-      <!-- metadata sent to you -->
-      <input type="hidden" name="room" value="Room 1 – Phone Name">
-      <input type="hidden" name="result" id="result">
-      <input type="hidden" name="_subject" value="✈️ Escape_
+  <input
+    type="text"
+    name="answer"
+    id="answer"
+    placeholder="Enter answer"
+    autocomplete="off"
+    required
+  >
+
+  <!-- metadata sent to you -->
+  <input type="hidden" name="room" value="Room 1 – Phone Name">
+  <input type="hidden" name="result" id="result">
+  <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
+
+  <button type="button" onclick="checkAnswer()">Unlock</button>
+</form>
