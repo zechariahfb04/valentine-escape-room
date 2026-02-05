@@ -9,7 +9,7 @@
 
   <div class="card">
     <h1>✈️ Elizabeth’s Rogue Plane Ride</h1>
-    <p class="subtitle">Departure: Nashville · Destination: San Francisco</p>
+    <p class="subtitle">Departure: East Coast · Destination: San Francisco</p>
 
     <p class="riddle">
       What is the nickname I call you?
@@ -27,6 +27,26 @@
     <p id="message" class="message"></p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer").value
+        .toLowerCase()
+        .trim();
+      const message = document.getElementById("message");
+
+      if (!input) {
+        message.textContent = "🛫 Enter a response before takeoff.";
+        return;
+      }
+
+      if (input === "min solstrale") {
+        message.textContent = "";
+        window.location.href = "room2.html";
+      } else {
+        message.textContent = "❌ Turbulence… try again.";
+      }
+    }
+  </script>
+
 </body>
 </html>
