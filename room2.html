@@ -12,28 +12,42 @@
     <p class="subtitle">Cruising altitude: 35,000 ft</p>
 
     <p class="riddle">
-      A stomp to the beat  
+      A stomp to the beat<br>
       and the month that we’ll meet.
     </p>
 
-    <input
-      type="text"
-      id="answer"
-      placeholder="Enter answer"
-      autocomplete="off"
+    <form
+      id="room2Form"
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
     >
+      <input
+        type="text"
+        name="answer"
+        id="answer"
+        placeholder="Enter answer"
+        autocomplete="off"
+        required
+      >
 
-    <button onclick="checkAnswer()">Unlock</button>
+      <!-- metadata for you -->
+      <input type="hidden" name="room" value="Room 2 – In the Air">
+      <input type="hidden" name="result" id="result">
+      <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
+
+      <button type="button" onclick="checkAnswer()">Unlock</button>
+    </form>
 
     <p id="message" class="message"></p>
   </div>
 
   <script>
     function checkAnswer() {
-      const input = document.getElementById("answer").value
-        .toLowerCase()
-        .trim();
+      const inputField = document.getElementById("answer");
+      const input = inputField.value.toLowerCase().trim();
       const message = document.getElementById("message");
+      const form = document.getElementById("room2Form");
+      const resultField = document.getElementById("result");
 
       if (!input) {
         message.textContent = "🛫 Enter a response before takeoff.";
@@ -41,12 +55,4 @@
       }
 
       if (input === "march") {
-        window.location.href = "room3.html";
-      } else {
-        message.textContent = "❌ Turbulence… try again.";
-      }
-    }
-  </script>
-
-</body>
-</html>
+        message.textContent = "✅ Smooth skies ah
