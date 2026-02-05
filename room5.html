@@ -1,18 +1,99 @@
-<p>Click the object that hides the key:</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room 6 – Search for the Key</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Room-specific object hunt styling */
+    body.airborne {
+      min-height: 100vh;
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #87ceeb 0%, #cfe9ff 50%, #ffffff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-<button onclick="wrong()">🕯️ Candle</button>
-<button onclick="wrong()">📘 Book</button>
-<button onclick="correct()">🗝️ Frame</button>
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 40px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+      height: 400px; /* enough space to scatter objects */
+    }
 
-<p id="message"></p>
+    .card p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
 
-<script>
-  function correct() {
-    window.location.href = "final.html";
-  }
+    .objects {
+      position: relative;
+      width: 100%;
+      height: 250px;
+    }
 
-  function wrong() {
-    document.getElementById("message").textContent =
-      "Nothing here… keep searching.";
-  }
-</script>
+    .objects button {
+      position: absolute;
+      font-size: 2rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .objects button:hover {
+      transform: scale(1.3);
+    }
+
+    /* Spread items around */
+    .parachute { top: 20px; left: 10%; }
+    .book { top: 60px; right: 15%; }
+    .cellphone { bottom: 30px; left: 40%; }
+    .key { bottom: 50px; right: 35%; }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body class="airborne">
+
+  <div class="card">
+    <h1>🪂 Cabin Object Hunt</h1>
+    <p>Click the object that will save your life!:</p>
+
+    <div class="objects">
+      <button class="parachute" onclick="wrong()">🗝️</button>
+      <button class="book" onclick="wrong()">📘</button>
+      <button class="cellphone" onclick="wrong()">📱</button>
+      <button class="key" onclick="correct()">🪂</button>
+    </div>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    function correct() {
+      document.getElementById("message").textContent = "🎉 You found the key! Heading to the final destination…";
+      setTimeout(() => {
+        window.location.href = "final.html";
+      }, 800);
+    }
+
+    function wrong() {
+      document.getElementById("message").textContent =
+        "Nothing here… keep searching.";
+    }
+  </script>
+
+</body>
+</html>
