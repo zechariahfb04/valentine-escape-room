@@ -13,27 +13,64 @@
 
     <p class="riddle">What is your name in my phone?</p>
 
-   <form
-  id="valentineForm"
-  action="https://formspree.io/f/xreazkva"
-  method="POST"
->
-  <!-- redirect controller -->
-  <input type="hidden" name="_redirect" id="redirect">
+    <form
+      id="valentineForm"
+      action="https://formspree.io/f/xreazkva"
+      method="POST"
+    >
+      <!-- redirect controller -->
+      <input type="hidden" name="_redirect" id="redirect">
 
-  <input
-    type="text"
-    name="answer"
-    id="answer"
-    placeholder="Enter answer"
-    autocomplete="off"
-    required
-  >
+      <input
+        type="text"
+        name="answer"
+        id="answer"
+        placeholder="Enter answer"
+        autocomplete="off"
+        required
+      >
 
-  <!-- metadata sent to you -->
-  <input type="hidden" name="room" value="Room 1 – Phone Name">
-  <input type="hidden" name="result" id="result">
-  <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
+      <!-- metadata sent to you -->
+      <input type="hidden" name="room" value="Room 1 – Phone Name">
+      <input type="hidden" name="result" id="result">
+      <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
 
-  <button type="button" onclick="checkAnswer()">Unlock</button>
-</form>
+      <button type="button" onclick="checkAnswer()">Unlock</button>
+    </form>
+
+    <!-- THIS was missing -->
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer").value
+        .toLowerCase()
+        .trim();
+
+      const message = document.getElementById("message");
+      const form = document.getElementById("valentineForm");
+      const result = document.getElementById("result");
+      const redirect = document.getElementById("redirect");
+
+      if (!input) {
+        message.textContent = "💭 Type something first.";
+        return;
+      }
+
+      if (input === "min solstrale") {
+        result.value = "Correct";
+        redirect.value = "room2.html";
+        message.textContent = "✈️ Boarding complete…";
+        form.submit();
+      } else {
+        result.value = "Wrong: " + input;
+        redirect.value = window.location.href;
+        message.textContent = "❌ Try again, Sunshine ☀️";
+        form.submit();
+      }
+    }
+  </script>
+
+</body>
+</html>
