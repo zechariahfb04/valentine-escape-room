@@ -2,27 +2,48 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Room 2</title>
+  <title>Room 2 – In the Air</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="airborne">
 
-  <h1>🔐 Room 2</h1>
-  <p>A stomp to the beat and the month that we'll meet.</p>
+  <div class="card">
+    <h1>✈️ En Route to San Francisco</h1>
+    <p class="subtitle">Cruising altitude: 35,000 ft</p>
 
-  <input type="text" id="answer">
-  <button onclick="checkAnswer()">Unlock</button>
-  <p id="message"></p>
+    <p class="riddle">
+      A stomp to the beat  
+      and the month that we’ll meet.
+    </p>
+
+    <input
+      type="text"
+      id="answer"
+      placeholder="Enter answer"
+      autocomplete="off"
+    >
+
+    <button onclick="checkAnswer()">Unlock</button>
+
+    <p id="message" class="message"></p>
+  </div>
 
   <script>
     function checkAnswer() {
-      const input = document.getElementById("answer").value.toLowerCase().trim();
+      const input = document.getElementById("answer").value
+        .toLowerCase()
+        .trim();
       const message = document.getElementById("message");
+
+      if (!input) {
+        message.textContent = "🛫 Enter a response before takeoff.";
+        return;
+      }
 
       if (input === "march") {
         window.location.href = "room3.html";
       } else {
-        message.textContent = "❌ Not quite. Try again.";
+        message.textContent = "❌ Turbulence… try again.";
       }
     }
   </script>
