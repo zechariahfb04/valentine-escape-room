@@ -2,45 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Final – Valentine Reveal</title>
+  <title>Final – Valentine Landing</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Final landing theme */
     body.airborne {
       min-height: 100vh;
       margin: 0;
       font-family: "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(to bottom, #ff9a9e 0%, #fad0c4 50%, #fff 100%);
+      background: linear-gradient(to bottom, #ff9a9e 0%, #fad0c4 50%, #ffffff 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.95);
-      padding: 40px 50px;
+      padding: 40px;
       border-radius: 20px;
       width: 90%;
       max-width: 500px;
       text-align: center;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      position: relative;
     }
 
     h1 {
+      margin-top: 0;
       font-size: 2rem;
-      margin-bottom: 10px;
     }
 
     .subtitle {
       font-size: 1rem;
       color: #555;
-      margin-bottom: 25px;
-    }
-
-    .riddle {
-      font-size: 1.1rem;
       margin-bottom: 25px;
     }
 
@@ -54,12 +46,6 @@
       text-align: center;
     }
 
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #ff6f91;
-      box-shadow: 0 0 5px rgba(255, 111, 145, 0.5);
-    }
-
     button {
       width: 100%;
       padding: 12px;
@@ -69,17 +55,15 @@
       background-color: #ff6f91;
       color: white;
       cursor: pointer;
-      transition: transform 0.2s, background-color 0.2s;
     }
 
     button:hover {
       background-color: #ff4b75;
-      transform: scale(1.05);
     }
 
     .message {
       margin-top: 20px;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: bold;
       color: #ff4b75;
     }
@@ -88,35 +72,37 @@
 <body class="airborne">
 
   <div class="card">
-    <h1>🌅 Welcome to San Francisco!</h1>
-    <p class="subtitle">The flight is complete — now for the big question…</p>
+    <h1>🌅 She Landed Safely</h1>
+    <p class="subtitle">East Coast → San Francisco complete</p>
 
     <p class="riddle">Will you be my Valentine?</p>
 
-    <input type="text" id="answer" placeholder="Type Yes or No" autocomplete="off">
-    <button onclick="checkAnswer()">Submit</button>
+    <form
+      action="https://formspree.io/f/YOUR_FORM_ID"
+      method="POST"
+      onsubmit="showMessage()"
+    >
+      <input
+        type="text"
+        name="valentine_answer"
+        placeholder="Type your answer"
+        required
+      >
+
+      <!-- Optional hidden context -->
+      <input type="hidden" name="source" value="Valentine Escape Room">
+      <input type="hidden" name="_subject" value="💌 Valentine Answer Received">
+
+      <button type="submit">Send Answer</button>
+    </form>
 
     <p id="message" class="message"></p>
   </div>
 
   <script>
-    function checkAnswer() {
-      const input = document.getElementById("answer").value
-        .toLowerCase()
-        .trim();
-      const message = document.getElementById("message");
-
-      if (!input) {
-        message.textContent = "💭 You need to answer before we celebrate!";
-        return;
-      }
-
-      if (input === "yes") {
-        message.textContent = "❤️ She said YES! Welcome to San Francisco, Valentine! 🎉";
-        document.querySelector("button").disabled = true;
-      } else {
-        message.textContent = "💔 Oh… maybe next time. But the journey was beautiful!";
-      }
+    function showMessage() {
+      document.getElementById("message").textContent =
+        "✈️ Message sent… waiting at the gate ❤️";
     }
   </script>
 
