@@ -30,3 +30,22 @@ function checkAnswer() {
     message.textContent = "❌ Try again, Sunshine☀️";
   }
 }
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffe6ee;
+  text-align: center;
+  padding: 40px;
+}
+
+.lock {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
