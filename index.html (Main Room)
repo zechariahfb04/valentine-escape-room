@@ -20,3 +20,13 @@
   <script src="script.js"></script>
 </body>
 </html>
+function checkAnswer() {
+  const input = document.getElementById("answer").value.toLowerCase();
+  const message = document.getElementById("message");
+
+  if (input === "Min Solstale") {
+    window.location.href = "room2.html";
+  } else {
+    message.textContent = "❌ Try again, Sunshine☀️";
+  }
+}
