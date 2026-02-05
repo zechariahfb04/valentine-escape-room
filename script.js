@@ -25,3 +25,14 @@ function checkAnswer() {
     form.submit();
   }
 }
+// Instead of form.submit(), do:
+fetch(form.action, {
+  method: form.method,
+  body: new FormData(form),
+  headers: { 'Accept': 'application/json' }
+})
+.then(response => {
+  if (response.ok && input === "min solstrale") {
+    window.location.href = "room2.html"; // redirect manually
+  }
+});
