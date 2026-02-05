@@ -11,42 +11,33 @@
     <h1>✈️ Elizabeth’s Rogue Plane Ride</h1>
     <p class="subtitle">Departure: Nashville · Destination: San Francisco</p>
 
-    <p class="riddle">
-      What is your name in my phone?
-    </p>
+    <p class="riddle">What is your name in my phone?</p>
 
-    <input
-      type="text"
-      id="answer"
-      placeholder="Enter answer"
-      autocomplete="off"
+    <form
+      id="valentineForm"
+      action="https://formspree.io/f/xreazkva"
+      method="POST"
     >
+      <input
+        type="text"
+        name="answer"
+        id="answer"
+        placeholder="Enter answer"
+        autocomplete="off"
+        required
+      >
 
-    <button onclick="checkAnswer()">Unlock</button>
+      <!-- metadata you receive -->
+      <input type="hidden" name="room" value="Room 1 – Phone Name">
+      <input type="hidden" name="result" id="result">
+      <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
+
+      <button type="button" onclick="checkAnswer()">Unlock</button>
+    </form>
 
     <p id="message" class="message"></p>
   </div>
 
   <script>
     function checkAnswer() {
-      const input = document.getElementById("answer").value
-        .toLowerCase()
-        .trim();
-      const message = document.getElementById("message");
-
-      if (!input) {
-        message.textContent = "🛫 Enter a response before takeoff.";
-        return;
-      }
-
-      if (input === "min solstrale") {
-        message.textContent = "";
-        window.location.href = "room2.html";
-      } else {
-        message.textContent = "❌ Mayday! Try again, Sunshine☀️!";
-      }
-    }
-  </script>
-
-</body>
-</html>
+      const inputField = document.getElementB
