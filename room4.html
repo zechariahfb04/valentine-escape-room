@@ -1,18 +1,42 @@
-<p>When did you first message me on Spotify?</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Room 5 – Approaching the Bay</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="airborne">
 
-<button onclick="wrong()">Song A</button>
-<button onclick="correct()">Song B</button>
-<button onclick="wrong()">Song C</button>
+  <div class="card">
+    <h1>🌁 Approaching San Francisco</h1>
+    <p class="subtitle">One last check before we land…</p>
 
-<p id="message"></p>
+    <p class="riddle">
+      When did you first message me on Spotify?
+    </p>
 
-<script>
-  function correct() {
-    window.location.href = "room5.html";
-  }
+    <div class="choices">
+      <button onclick="wrong()">Jan 10th 2023</button>
+      <button onclick="correct()">Jan 10th 2024</button>
+      <button onclick="wrong()">Feb 14th 2024</button>
+    </div>
 
-  function wrong() {
-    document.getElementById("message").textContent =
-      "💭 Nope… but that’s still a good one.";
-  }
-</script>
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+    function correct() {
+      document.getElementById("message").textContent = "🎉 Correct! Heading to the final destination…";
+      setTimeout(() => {
+        window.location.href = "final.html";
+      }, 800); // slight delay for effect
+    }
+
+    function wrong() {
+      document.getElementById("message").textContent =
+        "💭 Nope… but that’s still a good one.";
+    }
+  </script>
+
+</body>
+</html>
