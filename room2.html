@@ -20,6 +20,8 @@
       id="room2Form"
       action="https://formspree.io/f/xreazkva"
       method="POST"
+      data-answer="STOMPANSWERHERE"
+      data-next="room3.html"
     >
       <input
         type="text"
@@ -35,5 +37,12 @@
       <input type="hidden" name="result" id="result">
       <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
 
-      <button type="button" onclick="checkAnswer()">Unlock</button>
+      <button type="submit">Unlock</button>
     </form>
+
+    <p id="message" class="message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
