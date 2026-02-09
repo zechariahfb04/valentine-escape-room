@@ -1,38 +1,35 @@
 function checkAnswer() {
-  const input = document.getElementById("answer").value
-    .toLowerCase()
-    .trim();
-
+  const form = document.querySelector("form[data-answer]");
+  const inputField = form.querySelector("#answer");
   const message = document.getElementById("message");
-  const form = document.getElementById("valentineForm");
-  const result = document.getElementById("result");
-  const redirect = document.getElementById("redirect");
+  const resultField = form.querySelector("#result");
 
-  if (!input) {
+  const userAnswer = inputField.value.toLowerCase().trim();
+  const correctAnswer = form.dataset.answer.toLowerCase();
+  const nextRoom = form.dataset.next;
+
+  if (!userAnswer) {
     message.textContent = "💭 Type something first.";
     return;
   }
 
-  if (input === "min solstrale") {
-    result.value = "Correct";
-    redirect.value = "room2.html";
-    message.textContent = "✈️ Boarding complete…";
-    form.submit();
-  } else {
-    result.value = "Wrong: " + input;
-    redirect.value = window.location.href;
-    message.textContent = "❌ Try again, Sunshine ☀️";
-    form.submit();
-  }
+  const isCorrect = userAnswer === correctAnswer;
+  resultField.value = isCorrect ? "Correct" : "Wrong: " + userAnswer;
+
+  fetch(form.action, {
+    method: form.method,
+    body: new FormData(form),
+    headers: { "Accept": "application/json" }
+  })
+    .then(() => {
+      if (isCorrect) {
+        message.textContent = "✈️ Boarding complete…";
+        window.location.href = nextRoom;
+      } else {
+        message.textContent = "❌ Try again, Sunshine ☀️";
+      }
+    })
+    .catch(() => {
+      message.textContent = "⚠️ Signal lost… try again.";
+    });
 }
-// Instead of form.submit(), do:
-fetch(form.action, {
-  method: form.method,
-  body: new FormData(form),
-  headers: { 'Accept': 'application/json' }
-})
-.then(response => {
-  if (response.ok && input === "min solstrale") {
-    window.location.href = "room2.html"; // redirect manually
-  }
-});
