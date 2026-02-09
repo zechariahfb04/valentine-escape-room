@@ -14,9 +14,13 @@
     <p class="riddle">What is your name in my phone?</p>
 
     <form
-      id="valentineForm"
+      id="escapeForm"
       action="https://formspree.io/f/xreazkva"
       method="POST"
+
+      data-answer="min solstrale"
+      data-next="room2.html"
+      data-room="Room 1 – Phone Name"
     >
 
       <input
@@ -28,54 +32,17 @@
         required
       >
 
-      <!-- metadata sent to you -->
-      <input type="hidden" name="room" value="Room 1 – Phone Name">
-      <input type="hidden" name="result" id="result">
+      <input type="hidden" name="room">
+      <input type="hidden" name="result">
       <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
 
-      <button type="button" onclick="checkAnswer()">Unlock</button>
+      <button type="submit">Unlock</button>
     </form>
 
-    <!-- THIS was missing -->
     <p id="message" class="message"></p>
   </div>
 
- <script>
-  function checkAnswer() {
-    const input = document.getElementById("answer").value
-      .toLowerCase()
-      .trim();
-
-    const message = document.getElementById("message");
-    const form = document.getElementById("valentineForm");
-    const result = document.getElementById("result");
-
-    if (!input) {
-      message.textContent = "💭 Type something first.";
-      return;
-    }
-
-    // Determine correctness
-    const isCorrect = input === "min solstrale";
-    result.value = isCorrect ? "Correct" : "Wrong: " + input;
-
-    // Send silently to Formspree (NO redirect)
-    fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { "Accept": "application/json" }
-    }).then(() => {
-      if (isCorrect) {
-        message.textContent = "✈️ Boarding complete…";
-        window.location.href = "room2.html"; // YOU control progression
-      } else {
-        message.textContent = "❌ Try again, Sunshine ☀️";
-      }
-    }).catch(() => {
-      message.textContent = "⚠️ Signal lost… try again.";
-    });
-  }
-</script>
-
+  <!-- ONE JS FILE FOR ALL ROOMS -->
+  <script src="script.js"></script>
 </body>
 </html>
