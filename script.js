@@ -24,6 +24,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ? "Correct"
       : `Wrong: ${userAnswer}`;
 
+    const roomField = form.querySelector('[name="room"]');
+if  (roomField && form.dataset.room) {
+  roomField.value = form.dataset.room;
+}
+    
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
