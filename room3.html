@@ -2,52 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Room 4 – Descent to San Francisco</title>
+  <title>Room 3 – Descent to San Francisco</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="airborne">
 
   <div class="card">
-    <h1> Settle in and set airplane mode!</h1>
+    <h1>Settle in and set airplane mode!</h1>
     <p class="subtitle">You decide to read the Bible to pass the time.📘</p>
 
     <p class="riddle">
       Elizabeth was filled with the Holy Spirit. (Chapter + Verse)
     </p>
 
-    <input
-      type="number"
-      id="code"
-      placeholder="Enter 3 or 4-digit code"
-      autocomplete="off"
+    <form
+      id="room3Form"
+      action="https://formspree.io/f/xreazkva"
+      method="POST"
+      data-answer="0141"
+      data-next="room4.html"
+      data-room="Room 3 – Descent to San Francisco"
     >
+      <input
+        type="text"
+        name="answer"
+        id="answer"
+        placeholder="Enter 3 or 4-digit code"
+        autocomplete="off"
+        required
+      >
 
-    <button onclick="unlock()">Unlock</button>
+      <!-- metadata -->
+      <input type="hidden" name="room">
+      <input type="hidden" name="result">
+      <input type="hidden" name="_subject" value="✈️ Escape Room Attempt Logged">
+
+      <button type="submit">Unlock</button>
+    </form>
 
     <p id="message" class="message"></p>
   </div>
 
-  <script>
-    function unlock() {
-      const code = document.getElementById("code").value.trim();
-      const message = document.getElementById("message");
-
-      if (!code) {
-        message.textContent = "💭 Enter the code before landing!";
-        return;
-      }
-
-      // Ensure 4 digits (leading zero preserved)
-      const codeStr = code.padStart(4, "0");
-
-      if (codeStr === "0141") {
-        message.textContent = "I love you to Cali and back!";
-        window.location.href = "room4.html"; // final reveal page
-      } else {
-        message.textContent = "🚫 Hint: You are my 01! 💕";
-      }
-    }
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
